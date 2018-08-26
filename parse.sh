@@ -1,5 +1,5 @@
 #!/bin/bash
-for ((i=1;i<30;i++))
+for ((i=0;i<30;i++))
 do
     id=$(jq -r '.illusts['$i'].id' tmp/pixiv.json)
     title=$(jq -r '.illusts['$i'].title' tmp/pixiv.json)

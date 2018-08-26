@@ -3,12 +3,17 @@
 mkdir tmp -p
 mkdir src -p
 
-curl -s "https://api.imjad.cn/pixiv/v2/?type=rank&page=1" > tmp/pixiv.json
-
 chmod +x parse.sh
-./parse.sh
-
 cp -rf tpl/template.html src/index.html
+
+curl -s "https://api.imjad.cn/pixiv/v2/?type=rank&mode=day&page=1" > tmp/pixiv.json
+./parse.sh
+curl -s "https://api.imjad.cn/pixiv/v2/?type=rank&mode=day&page=2" > tmp/pixiv.json
+./parse.sh
+curl -s "https://api.imjad.cn/pixiv/v2/?type=rank&mode=day&page=3" > tmp/pixiv.json
+./parse.sh
+curl -s "https://api.imjad.cn/pixiv/v2/?type=rank&mode=day&page=4" > tmp/pixiv.json
+./parse.sh
 
 cat tmp/main.html | tr "\n" " " > tmp/main-tpl.html
 
