@@ -14,6 +14,8 @@ curl -s "https://api.imjad.cn/pixiv/v2/?type=rank&mode=day&page=3" > tmp/pixiv.j
 ./parse.sh
 curl -s "https://api.imjad.cn/pixiv/v2/?type=rank&mode=day&page=4" > tmp/pixiv.json
 ./parse.sh
+curl -s "https://api.imjad.cn/pixiv/v2/?type=rank&mode=day&page=5" > tmp/pixiv.json
+./parse.sh
 
 cat tmp/main.html | tr "\n" " " > tmp/main-tpl.html
 
@@ -21,6 +23,7 @@ pixivHTML=$(cat tmp/main-tpl.html)
 
 sed -i "s~{{Main}}~${pixivHTML}~g" src/index.html
 sed -i "s~i.pximg.net~i.pixiv.cat~g" src/index.html
+sed -i "s~/c/600x1200_90~~g" src/index.html
 
 npm run build
 
