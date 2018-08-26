@@ -10,7 +10,9 @@
     <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.jsdelivr.net/npm/skx@0.0.1/favicon/favicon-32x32.png">
     <meta name="format-detection" content="telephone=no">
     <meta name="description" content="Pixiv 排行榜 - 插画">
-    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sukkalab/pixiv@1.0/assets/css/main.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400,400italic">
     <meta property="og:title" content="Pixiv 排行榜 - 插画 | SukkaLab">
     <meta property="og:type" content="Website">
     <meta property="og:url" content="https://lab.suka.moe/pixiv">
@@ -39,44 +41,22 @@
         </header>
 
         <!-- Main -->
-        <div id="main"></div>
+        <div id="main">
+            {{Main}}
+        </div>
     </div>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.1"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@8.9.0"></script>
+    <script src="https://cdn.jsdelivr.net/gh/sukkalab/pixiv@1.0/assets/js/jquery.poptrox.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/ajlkn/responsive-tools@1.0/dist/browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/ajlkn/responsive-tools@1.0/dist/breakpoints.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/sukkalab/pixiv@1.0/assets/js/util.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/sukkalab/pixiv@1.0/assets/js/main.min.js"></script>
     <script>
-        function loadGalleryScript(src) {
-            var s = document.createElement("script");
-            s.type = "text/javascript";
-            s.src = src;
-            $("body").append(s);
-        }
-
-        function loadGallery() {
-            loadGalleryScript("https://cdn.jsdelivr.net/gh/sukkalab/pixiv@1.0/assets/js/jquery.poptrox.min.js");
-            loadGalleryScript("https://cdn.jsdelivr.net/gh/ajlkn/responsive-tools@1.0/dist/browser.min.js");
-            loadGalleryScript("https://cdn.jsdelivr.net/gh/ajlkn/responsive-tools@1.0/dist/breakpoints.min.js");
-            loadGalleryScript("https://cdn.jsdelivr.net/gh/sukkalab/pixiv@1.0/assets/js/util.js");
-            loadGalleryScript("https://cdn.jsdelivr.net/gh/sukkalab/pixiv@1.0/assets/js/main.js");
-        }
         var myLazyLoad = new LazyLoad({
             elements_selector: ".lazyload"
-        });
-        $.getJSON("https://api.imjad.cn/pixiv/v2/?type=rank", function (data) {
-            $.each(data.illusts, function (index, value) {
-                $("#main").append(`
-                <article class="thumb">
-                    <a href="${value.image_urls.large.replace('i.pximg.net', 'i.pixiv.cat')}" class="image lazyload" data-src="${value.image_urls.medium.replace('i.pximg.net', 'i.pixiv.cat')}">
-                        <img class="lazyload" data-src="${value.image_urls.medium.replace('i.pximg.net', 'i.pixiv.cat')}" alt="${value.title}">
-                    </a>
-                    <h2>${value.title}</h2>
-                    <p>${value.user.name} - pixiv.net/i/${value.id}</p>
-                </article>
-                `);
-            });
-            myLazyLoad.update();
-            loadGallery();
         });
     </script>
     <script>!function (a, b, c, d, e) { var f = c.screen, g = encodeURIComponent, h = ["ga=" + a, "dt=" + g(d.title), "dr=" + g(d.referrer), "ul=" + (e.language || e.browserLanguage || e.userLanguage), "sd=" + f.colorDepth + "-bit", "sr=" + f.width + "x" + f.height, "vp=" + Math.max(d.documentElement.clientWidth, c.innerWidth || 0) + "x" + Math.max(d.documentElement.clientHeight, c.innerHeight || 0), "z=" + +new Date]; c.__ga_img = new Image, c.__ga_img.src = b + "?" + h.join("&") }("UA-122669675-3", "https://ga.giuem.com", window, document, navigator, location);</script>
