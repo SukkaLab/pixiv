@@ -1,14 +1,21 @@
 #!/bin/bash
+
 mkdir tmp -p
-touch tmp/main.html
+mkdir src -p
 
 curl -s "https://api.imjad.cn/pixiv/v2/?type=rank&page=1" > tmp/pixiv.json
 
 chmod +x parse.sh
 ./parse.sh
 
-cp -rf src/index.html tmp/index.html
+cp -rf tpl/template.html src/index.html
 
-pixivHTML=$(cat tmp/main.html)
+cat tmp/main.html | tr "\n" " " > tmp/main-tpl.html
 
-sed -i "s|{{Main}}|$pixivHTML|g" tmp/index.html
+pixivHTML=$(cat tmp/main-tpl.html)
+
+sed -i "s~{{Main}}~${pixivHTML}~g" src/index.html
+
+npm run build
+
+rm -rf tmp

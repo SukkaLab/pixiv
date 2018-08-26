@@ -1,3 +1,5 @@
-assets/sass
-
+node_modules
 tmp
+src
+dist
+example.json
