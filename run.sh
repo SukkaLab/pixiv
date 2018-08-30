@@ -23,7 +23,6 @@ pixivHTML=$(cat tmp/main-tpl.html)
 
 sed -i "s~{{Main}}~${pixivHTML}~g" src/index.html
 sed -i "s~i.pximg.net~i.pixiv.cat~g" src/index.html
-sed -i "s~/c/600x1200_90~~g" src/index.html
 
 npm run build
 
