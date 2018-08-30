@@ -2,6 +2,7 @@
 
 mkdir tmp -p
 mkdir src -p
+mkdir dist -p
 
 chmod +x parse.sh
 cp -rf tpl/template.html src/index.html
