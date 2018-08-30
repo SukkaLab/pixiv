@@ -2,10 +2,8 @@ language: node_js
 node_js:
   - "10"
 dist: trusty
-before_install:
-  - sudo apt-get install -y jq
 install:
-  - npm i
+  - sudo apt-get install -y jq
 script:
   - chmod +x ./run.sh
   - ./run.sh
