@@ -13,6 +13,6 @@ do
     echo '<img class="lazyload" data-src="'${img_medium}'" alt="'${title}'">' >> tmp/main.html
     echo '</a>' >> tmp/main.html
     echo '<h2>'${title}'</h2>' >> tmp/main.html
-    echo '<p>'${author}' - <a href="https://pixiv.net/i/'${id}'" target="_blank">pixiv.net/i/'${id}'</p>' >> tmp/main.html
+    echo '<p>'${author}' - <a href="https://pixiv.net/i/'${id}'" target="_blank">pixiv.net/i/'${id}'</a></p>' >> tmp/main.html
     echo '</article>' >> tmp/main.html
 done
