@@ -23,7 +23,7 @@ cat tmp/main.html | tr "\n" " " > tmp/main-tpl.html
 pixivHTML=$(cat tmp/main-tpl.html)
 
 sed -i "s~{{Main}}~${pixivHTML}~g" src/index.html
-sed -i "s~i.pximg.net~pixiv.skk.moe~g" src/index.html
+sed -i "s~i.pximg.net~i.pixiv.cat~g" src/index.html
 
 cp -rf src/index.html dist/index.html
 
